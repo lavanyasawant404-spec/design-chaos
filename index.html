@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kavad Art | Stories Crafted by Hand</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:#f7f0e5;
+  color:#351b16;
+}
+header{
+  background:#4b1718;
+  color:#fff;
+  padding:20px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.logo{
+  font-family:Georgia,serif;
+  font-size:28px;
+  letter-spacing:2px;
+}
+nav button{
+  background:none;
+  border:0;
+  color:white;
+  margin-left:20px;
+  cursor:pointer;
+  font-size:15px;
+}
+.hero{
+  min-height:520px;
+  display:flex;
+  align-items:center;
+  padding:70px 8%;
+  background:linear-gradient(90deg,#f7f0e5 50%,#e8d3b5 50%);
+}
+.hero-text{max-width:600px}
+.hero h1{
+  font-family:Georgia,serif;
+  font-size:58px;
+  margin-bottom:20px;
+}
+.hero p{
+  font-size:18px;
+  line-height:1.7;
+  margin-bottom:30px;
+}
+.btn{
+  background:#8d2525;
+  color:white;
+  border:0;
+  padding:14px 25px;
+  cursor:pointer;
+  border-radius:3px;
+  font-weight:bold;
+}
+.section{padding:70px 8%}
+.section h2{
+  font-family:Georgia,serif;
+  text-align:center;
+  font-size:38px;
+  margin-bottom:40px;
+}
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:28px;
+}
+.card{
+  background:white;
+  padding:15px;
+  box-shadow:0 5px 20px #0001;
+}
+.card img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  background:#ddd;
+}
+.card h3{margin:15px 0 8px;font-family:Georgia,serif}
+.price{font-weight:bold;margin-bottom:15px}
+.page{display:none}
+.page.active{display:block}
+.product-detail{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+.product-detail img{
+  width:100%;
+  max-height:550px;
+  object-fit:cover;
+  background:#ddd;
+}
+.product-detail h1{
+  font-family:Georgia,serif;
+  font-size:45px;
+  margin-bottom:15px;
+}
+.product-detail p{
+  line-height:1.7;
+  margin:20px 0;
+}
+input,textarea,select{
+  width:100%;
+  padding:13px;
+  margin:8px 0 18px;
+  border:1px solid #c8b9a4;
+  background:white;
+}
+.form{
+  max-width:650px;
+  margin:auto;
+  background:white;
+  padding:35px;
+}
+.cart-item{
+  background:white;
+  padding:20px;
+  margin:10px 0;
+  display:flex;
+  justify-content:space-between;
+}
+.confirm{
+  text-align:center;
+  padding:100px 20px;
+}
+.confirm h1{
+  font-family:Georgia,serif;
+  font-size:48px;
+  margin-bottom:20px;
+}
+footer{
+  background:#351b16;
+  color:white;
+  text-align:center;
+  padding:35px;
+  margin-top:50px;
+}
+@media(max-width:700px){
+  .hero{background:#f7f0e5}
+  .hero h1{font-size:40px}
+  .product-detail{grid-template-columns:1fr}
+  header{flex-direction:column;gap:15px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">KAVAD ART</div>
+  <nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('shop')">Shop</button>
+    <button onclick="showPage('story')">Our Story</button>
+    <button onclick="showPage('cart')">Cart 🛒</button>
+  </nav>
+</header>
+
+<!-- HOME -->
+<section id="home" class="page active">
+
+<div class="hero">
+  <div class="hero-text">
+    <h1>Stories carved in wood, carried through generations.</h1>
+    <p>
+      Discover the beauty of traditional Rajasthani Kavad storytelling
+      transformed into contemporary handcrafted products.
+    </p>
+    <button class="btn" onclick="showPage('shop')">
+      Explore Collection
+    </button>
+  </div>
+</div>
+
+<section class="section">
+  <h2>Featured Collection</h2>
+
+  <div class="products">
+
+    <div class="card">
+      <img src="https://via.placeholder.com/500x500?text=Kavad+Makeup+Box">
+      <h3>Kavad Makeup Box</h3>
+      <p class="price">₹300</p>
+      <button class="btn" onclick="openProduct('makeup')">View Product</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/500x500?text=Kavad+Gift+Box">
+      <h3>Kavad Gift Box</h3>
+      <p class="price">₹500</p>
+      <button class="btn" onclick="openProduct('gift')">View Product</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/500x500?text=Kavad+Mirror">
+      <h3>Kavad Mirror</h3>
+      <p class="price">₹250</p>
+      <button class="btn" onclick="openProduct('mirror')">View Product</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/500x500?text=Kavad+Keychain">
+      <h3>Kavad Keychain</h3>
+      <p class="price">Price to be added</p>
+      <button class="btn" onclick="openProduct('keychain')">View Product</button>
+    </div>
+
+  </div>
+</section>
+
+<footer>KAVAD ART · Traditional Craft, Contemporary Stories</footer>
+</section>
+
+
+<!-- SHOP -->
+<section id="shop" class="page">
+<div class="section">
+<h2>Our Collection</h2>
+
+<div class="products">
+
+<div class="card">
+<img src="https://via.placeholder.com/500x500?text=Kavad+Makeup+Box">
+<h3>Kavad Makeup Box</h3>
+<p class="price">₹300</p>
+<button class="btn" onclick="openProduct('makeup')">View Product</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/500x500?text=Kavad+Gift+Box">
+<h3>Kavad Gift Box</h3>
+<p class="price">₹500</p>
+<button class="btn" onclick="openProduct('gift')">View Product</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/500x500?text=Kavad+Mirror">
+<h3>Kavad Mirror</h3>
+<p class="price">₹250</p>
+<button class="btn" onclick="openProduct('mirror')">View Product</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/500x500?text=Kavad+Keychain">
+<h3>Kavad Keychain</h3>
+<p class="price">Price to be added</p>
+<button class="btn" onclick="openProduct('keychain')">View Product</button>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- PRODUCT -->
+<section id="product" class="page">
+<div class="section">
+<div class="product-detail">
+
+<img id="productImage">
+
+<div>
+<h1 id="productName"></h1>
+<h2 id="productPrice"></h2>
+
+<p id="productDescription">
+A handcrafted product inspired by the traditional visual language
+of Rajasthani Kavad storytelling.
+</p>
+
+<label>Quantity</label>
+<input id="quantity" type="number" value="1" min="1">
+
+<br>
+
+<button class="btn" onclick="addToCart()">Add to Cart</button>
+<button class="btn" onclick="buyNow()">Buy Now</button>
+
+<br><br>
+
+<button onclick="showPage('shop')">
+← Back to Collection
+</button>
+
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- STORY -->
+<section id="story" class="page">
+<div class="section">
+<h2>Our Story</h2>
+
+<div style="max-width:800px;margin:auto;line-height:2;font-size:18px;">
+<p>
+Kavad is a traditional storytelling craft from Rajasthan,
+where painted wooden panels are opened and displayed to narrate
+stories, legends and cultural traditions.
+</p>
+
+<br>
+
+<p>
+Kavad Art reimagines this heritage through handcrafted
+contemporary products, bringing traditional Indian storytelling
+into everyday life.
+</p>
+
+<br>
+
+<p>
+Every piece carries the spirit of craftsmanship, culture and
+storytelling.
+</p>
+</div>
+</div>
+</section>
+
+
+<!-- CART -->
+<section id="cart" class="page">
+<div class="section">
+
+<h2>Your Cart</h2>
+
+<div id="cartItems"></div>
+
+<h2 id="cartTotal">Total: ₹0</h2>
+
+<div style="text-align:center">
+<button class="btn" onclick="showPage('checkout')">
+Proceed to Checkout
+</button>
+</div>
+
+</div>
+</section>
+
+
+<!-- CHECKOUT -->
+<section id="checkout" class="page">
+<div class="section">
+
+<h2>Checkout</h2>
+
+<div class="form">
+
+<label>Name</label>
+<input type="text" placeholder="Your name">
+
+<label>Email</label>
+<input type="email" placeholder="Your email">
+
+<label>Phone</label>
+<input type="tel" placeholder="Phone number">
+
+<label>Address</label>
+<textarea placeholder="Delivery address"></textarea>
+
+<label>City</label>
+<input type="text" placeholder="City">
+
+<label>PIN Code</label>
+<input type="text" placeholder="PIN code">
+
+<label>Payment Method</label>
+<select>
+<option>Cash on Delivery</option>
+<option>UPI</option>
+<option>Card</option>
+</select>
+
+<button class="btn" onclick="placeOrder()">
+Place Order
+</button>
+
+</div>
+</div>
+</section>
+
+
+<!-- CONFIRMATION -->
+<section id="confirmation" class="page">
+
+<div class="confirm">
+
+<h1>Thank You!</h1>
+
+<p style="font-size:20px;">
+Thank you for supporting Indian craft.
+</p>
+
+<br>
+
+<p>
+Your order number is <strong>#KAVAD1024</strong>
+</p>
+
+<br>
+
+<button class="btn" onclick="showPage('shop')">
+Continue Shopping
+</button>
+
+</div>
+
+</section>
+
+
+<script>
+
+let currentProduct = {};
+let cart = [];
+
+const products = {
+
+makeup:{
+name:"Kavad Makeup Box",
+price:300,
+image:"https://via.placeholder.com/700x700?text=Kavad+Makeup+Box",
+description:"A handcrafted makeup box inspired by traditional Kavad storytelling panels."
+},
+
+gift:{
+name:"Kavad Gift Box",
+price:500,
+image:"https://via.placeholder.com/700x700?text=Kavad+Gift+Box",
+description:"A beautiful handcrafted gift box combining traditional Indian craft with contemporary design."
+},
+
+mirror:{
+name:"Kavad Mirror",
+price:250,
+image:"https://via.placeholder.com/700x700?text=Kavad+Mirror",
+description:"A decorative handcrafted mirror inspired by the visual language of Rajasthani Kavad art."
+},
+
+keychain:{
+name:"Kavad Keychain",
+price:0,
+image:"https://via.placeholder.com/700x700?text=Kavad+Keychain",
+description:"A small handcrafted Kavad-inspired accessory designed to carry traditional art wherever you go."
+}
+
+};
+
+function showPage(id){
+
+document.querySelectorAll('.page')
+.forEach(page=>page.classList.remove('active'));
+
+document.getElementById(id)
+.classList.add('active');
+
+window.scrollTo(0,0);
+
+if(id==="cart") renderCart();
+
+}
+
+function openProduct(id){
+
+currentProduct=products[id];
+
+document.getElementById("productName")
+.innerText=currentProduct.name;
+
+document.getElementById("productPrice")
+.innerText=currentProduct.price
+? "₹"+currentProduct.price
+: "Price to be added";
+
+document.getElementById("productImage")
+.src=currentProduct.image;
+
+document.getElementById("productDescription")
+.innerText=currentProduct.description;
+
+document.getElementById("quantity").value=1;
+
+showPage("product");
+
+}
+
+function addToCart(){
+
+let quantity=parseInt(
+document.getElementById("quantity").value
+);
+
+cart.push({
+name:currentProduct.name,
+price:currentProduct.price,
+quantity:quantity
+});
+
+alert("Product added to cart!");
+
+showPage("cart");
+
+}
+
+function buyNow(){
+
+let quantity=parseInt(
+document.getElementById("quantity").value
+);
+
+cart.push({
+name:currentProduct.name,
+price:currentProduct.price,
+quantity:quantity
+});
+
+showPage("checkout");
+
+}
+
+function renderCart(){
+
+let container=document.getElementById("cartItems");
+
+container.innerHTML="";
+
+let total=0;
+
+cart.forEach(item=>{
+
+let subtotal=item.price*item.quantity;
+
+total+=subtotal;
+
+container.innerHTML+=`
+
+<div class="cart-item">
+
+<div>
+<strong>${item.name}</strong>
+<br>
+Quantity: ${item.quantity}
+</div>
+
+<div>
+₹${subtotal}
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("cartTotal")
+.innerText="Total: ₹"+total;
+
+}
+
+function placeOrder(){
+
+showPage("confirmation");
+
+}
+
+</script>
+
+</body>
+</html>
